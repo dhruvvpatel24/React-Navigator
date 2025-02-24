@@ -10,15 +10,15 @@ const ViewApi = () => {
 
   ////// search input //////
 
-  // const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
 
   ////// select price ////
 
-  // const [price, setPrice] = useState("");
+  const [price, setPrice] = useState("");
 
   ///// sorting ////
 
-  // const [sortValue,setSort] = useState("")  
+  const [sortValue,setSort] = useState("")  
 
   const redirect = useNavigate();
   var URL = "https://67ab14b965ab088ea7e89349.mockapi.io/product";
@@ -34,44 +34,44 @@ const ViewApi = () => {
 
   ////// filter data //////
 
-  // const filterProduct = products
-  //   .filter((products) => {
-  //     console.log(products.p_category);
+  const filterProduct = products
+    .filter((products) => {
+      console.log(products.p_category);
 
       ////// 1st Method ////
       // return products.p_category.toUpperCase().includes(search.toUpperCase());
 
       ////// 2nd Method ////
-      // const Category = products.p_category.toUpperCase();
-      // const SearchInput = search.toUpperCase();
-      // return Category.includes(SearchInput);
-    // })
-    // .filter((products) => {
+      const Category = products.p_category.toUpperCase();
+      const SearchInput = search.toUpperCase();
+      return Category.includes(SearchInput);
+     })
+    .filter((products) => {
 
       // 2 condition //
       // return price === 'lessThan2k' ? products.p_price <=2000 :  products.p_price > 2000
 
       /// Multiple Condition //
 
-    //   if (price === "lessThan2k") {
-    //     return products.p_price <= 2000;
-    //   } else if (price === "moreThan2k") {
-    //     return products.p_price > 2000;
-    //   } else {
-    //     return products;
-    //   }
+      if (price === "lessThan2k") {
+        return products.p_price <= 2000;
+      } else if (price === "moreThan2k") {
+        return products.p_price > 2000;
+      } else {
+        return products;
+      }
 
-    // })
-    // .sort((a,b)=>{
-    //   if(sortValue==='asc'){
-    //     return a.p_name.localeCompare(b.p_name)
-    //   }else if(sortValue==='desc') {
-    //     return b.p_name.localeCompare(a.p_name)
-    //   }else{
-    //     return products
-    //   }
+    })
+    .sort((a,b)=>{
+      if(sortValue==='asc'){
+        return a.p_name.localeCompare(b.p_name)
+      }else if(sortValue==='desc') {
+        return b.p_name.localeCompare(a.p_name)
+      }else{
+        return products
+      }
 
-    // })
+    })
 
 
   async function trash(id) {
@@ -86,7 +86,7 @@ const ViewApi = () => {
   }
   return (
     <>
-      {/* <div className="container">
+       <div className="container">
         <div className="row">
           <div className="col-lg-4">
             <input
@@ -118,7 +118,7 @@ const ViewApi = () => {
             </select>
           </div>
         </div>
-      </div> */}
+      </div> 
       <div className="container table-responsive  my-5">
         <table className="table table-striped table-hover table-dark">
           <thead className="table-dark">
@@ -134,8 +134,8 @@ const ViewApi = () => {
           </thead>
           <tbody>
           {/* filterProduct */}
-            {products &&
-             products .map((products, index) => (
+            {filterProduct &&
+             filterProduct .map((products, index) => (
                 <tr key={products.id}>
                   <td>{index + 1}</td>
                   <td>{products.p_category}</td>

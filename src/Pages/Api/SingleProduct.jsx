@@ -45,7 +45,7 @@ const SingleProduct = () => {
         <div className="card shadow-lg bg-dark text-white">
           <div className="row g-0">
             <div className="col-md-4">
-            <img src={product.p_url} alt="" className="img-fluid rounded-start w-100 "  />
+            <img src={product.p_url} alt="" className="img-fluid rounded-start w-100 img-thumbnail "  />
               {/* <img
                 src="{product.p_url}"
                 className="img-fluid rounded-start h-100"
